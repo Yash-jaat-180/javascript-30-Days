@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .yash-container {
+            background-color: red;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="container" class="yash-container">
+        <h1>This is me</h1>
+        <p class="para">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut, ea nostrum exercitationem accusantium harum quod expedita obcaecati doloribus inventore amet explicabo. Cumque enim illo alias ullam reiciendis, quidem dignissimos odit velit sunt atque! Iure.</p>
+        <button id="btn">changePara</button>
+        <ul id="unorderList">
+            <li>Name</li>
+            <li>age</li>
+        </ul>
+        <img id="img" src="">
+    </div>
+
+    <script>
+
+        // Activity 1
+        let container = document.getElementById("container")
+        
+        container.appendChild(document.createElement("p").appendChild(document.createTextNode("My name is yash")));
+
+        let para = document.getElementsByClassName("para")
+        para[0].style.backgroundColor = "red";
+
+        // Activity 2
+        let body = document.querySelector("body");
+        let div = document.createElement("div");
+        div.appendChild(document.createTextNode(" Outsite the container"));
+        body.appendChild(div);
+
+        // Activity 3
+        let html = document.querySelector("html");
+        //html.remove();
+        //console.log(html.lastChild);
+        //html.removeChild(html.lastChild);
+
+        // Activity 4
+        let img = document.getElementById("img");
+        //img.setAttribute("src", "yash");
+        //console.log(img.attributes["src"]);
+
+        img.classList.add("cont");
+        console.log(img.classList)
+        img.classList.remove("cont");
+
+        // Activity 5
+        let btn = document.getElementById("btn");
+        btn.addEventListener("click", function() {
+            para[0].innerText = "Hey button clicked";
+        })
+
+        container.addEventListener("mouseover", function(){
+            container.style.borderColor = "blue";
+        })
+
+    </script>
+</body>
+</html>
