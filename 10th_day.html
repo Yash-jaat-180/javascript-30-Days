@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container">
+        <p id="para">This is me</p>
+        <button id="btn">ChangePara</button>
+        <img id="img" src="" alt="" height="30px" width="30px">
+        <button id="imgBtn">ToggleImgVisibility</button>
+
+        <input type="text" name="username">
+
+    </div>
+
+    <form>
+        <input type="text" id="username">
+        <button type="submit">submit</button>
+    </form>
+
+    <select id="dropdown">
+        <option>He</option>
+        <option>she</option>
+        <option>We</option>
+    </select>
+    <p id="para1"></p>
+
+    <ul>
+        <li>yo</li>
+        <li>wari</li>
+        <li>gome</li>
+    </ul>
+    <p id="para2"></p>
+
+    <div id="parent">parnet</div>
+    <div id="addChild">child</div>
+    <script>
+        // Activity 1
+        let btn = document.getElementById("btn");
+        let para = document.getElementById("para");
+        btn.addEventListener("click", function () {
+            para.innerText += "My name is yash";
+        })
+
+        let img = document.getElementById("img");
+        let imgBtn = document.getElementById("imgBtn");
+
+        let toggle = true;
+        imgBtn.addEventListener("dblclick", function () {
+
+            if (toggle) {
+                img.setAttribute("src", "appointment.jpg")
+                toggle = false;
+            }
+            else {
+                img.setAttribute("src", "");
+                toggle = true;
+            }
+            console.log(toggle)
+        })
+        // Activity 2
+        let container = document.getElementById("container");
+        container.addEventListener("mouseover", function() {
+            container.style.background = "aqua"
+        })
+        container.addEventListener("mouseout", function() {
+            container.style.background = "white"
+        })
+
+        // Activity 3
+        let input = document.querySelector("input");
+        input.addEventListener("keydown", function(e) {
+            para.innerText = `you pressed ${e.key}`;
+        })
+
+        input.addEventListener("keyup", function(e){
+            para.innerText = input.value;
+        })
+
+        // Activity 4
+        let form = document.querySelector("form");
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            console.log(form.elements.username.value);
+        })
+        
+        let para1 = document.getElementById("para1");
+        let dropdown = document.getElementById("dropdown");
+        dropdown.addEventListener("change", function(e) {
+            para1.innerText = dropdown.value
+        })
+
+        // Activity 5
+        let ul = document.querySelector("ul");
+        let para2 = document.getElementById("para2");
+        ul.addEventListener("click", function(e) {
+            if(e.target.tagName === "LI"){
+                para2.innerText = e.target.textContent;
+            }
+        })
+
+        let parent = document.getElementById("parent")
+        let addChild = document.getElementById("addChild");
+
+        parent.addEventListener("click", function(e) {
+            if(e.target.classList.contains("child")){
+                console.log(`clicked child element text:${e.target.textContent}`)
+            }
+        })
+        let childCount = 0;
+        addChild.addEventListener("click", function(e){
+            childCount++;
+            const newChild = document.createElement("div");
+            newChild.className = 'child';
+            newChild.textContent = `child ${childCount}`;
+            parent.appendChild(newChild);
+        })
+    </script>
+</body>
+
+</html>
